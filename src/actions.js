@@ -38,7 +38,6 @@ export const renderNotes = () => async(dispatch) => {
 
 export const addNote = (newData) => async(dispatch) => {
     try {
-        console.log('hello')
         const data  = (await axios.post(`/createNote`, newData)).data
         dispatch(addNoteAction(data))
     }

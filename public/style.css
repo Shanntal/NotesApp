@@ -71,3 +71,7 @@ input[type=text] {
 input[name=text] {
     width: 100%;
 }
+
+#noteDate {
+    font-size: x-small;
+}

@@ -25,6 +25,7 @@ class AddNoteForm extends React.Component {
                 text: state.text
             })
         this.setState(initialState)
+        window.alert('Your note has been added!')
         }
         catch(error) {
             console.log(error)
