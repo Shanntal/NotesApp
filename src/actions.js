@@ -28,7 +28,6 @@ const addNoteAction = (newData) => {
 
 export const renderNotes = () => async(dispatch) => {
     try {
-        //const { data } = await axios.get('/api/notes')
         const data = (await axios.get('/listNotes')).data
         dispatch(renderNotesAction(data))
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNote } from '../actions';
 import { v4 as uuidv4} from 'uuid';
@@ -41,12 +42,17 @@ class AddNoteForm extends React.Component {
         const { title, text } = this.state;
 
         return(
-            <div className='AddNoteForm'>
-                <form onSubmit= { onSave }>
-                    <input placeholder='Title...' name='title' value={ title } onChange= { onChange } /> 
-                    <input placeholder='Your Note...' name='text' value={ text } onChange= { onChange } />
-                    <button>Add Note</button>
+            <div id='main'>
+                <div id='header'>
+                    <h1>Add Note</h1>
+                </div>
+                <form id='addNote' onSubmit= {onSave}>
+                    <input placeholder='Title...' type='text' name='title' value={ title } onChange= { onChange } />
+                    <textarea  rows="5" cols="110" placeholder='Your Note...' type='text' name='text' value={ text } onChange= { onChange }></textarea>
+                    <button id='button'>Add Note</button>
+
                 </form>
+                <Link to='/listNotes'>All Your Notes</Link>
             </div>
         );
     }

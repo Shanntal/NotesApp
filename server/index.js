@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { UUID, UUIDV4, STRING} = Sequelize
+const { UUID, UUIDV4, STRING, TEXT} = Sequelize
 const connection = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/notesApp');
 
 const Note = connection.define('note', {
@@ -17,7 +17,7 @@ const Note = connection.define('note', {
         }
     },
     text: {
-        type: STRING,
+        type: TEXT,
         allowNull: false,
         validate: {
             notEmpty: true

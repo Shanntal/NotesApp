@@ -14,24 +14,25 @@ class AllNotes extends Component {
 
     render() {
         return (
-            <div>
-                <h1>All Notes</h1>
-                <Link to='/createNote'><button>Add Note</button> </Link>
+            <div id='main'>
+                <div id='header'>
+                    <h1>All Notes</h1>
+                </div>
                 <div className='notesContainer'>
                     {this.props.notes.map(note => {
-                        //const linkAddress = `/notes/${note.id}`
-                        //const id = `${note.id}`
                         return (
                             <div key={note.id}>
                                 <ul>
                                     <li>
                                         <h2>{note.title}</h2>
+                                        <p>{note.text}</p>
                                     </li>
                                 </ul> 
                             </div>
                         )
                     })}
                 </div>
+                <Link to='/createNote'><button id='button'>Add Note</button> </Link>
             </div>
         )
     }
