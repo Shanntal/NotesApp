@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { addNote } from '../actions';
 import { v4 as uuidv4} from 'uuid';
 
+import toast, { Toaster } from 'react-hot-toast';
+const notify = () => toast('Your note has been added');
+
 const initialState = {
     title: '',
     text: ''
@@ -25,7 +28,6 @@ class AddNoteForm extends React.Component {
                 text: state.text
             })
         this.setState(initialState)
-        window.alert('Your note has been added!')
         }
         catch(error) {
             console.log(error)
@@ -50,8 +52,8 @@ class AddNoteForm extends React.Component {
                 <form id='addNote' onSubmit= {onSave}>
                     <input placeholder='Title...' type='text' name='title' value={ title } onChange= { onChange } />
                     <textarea  rows="5" cols="110" placeholder='Your Note...' type='text' name='text' value={ text } onChange= { onChange }></textarea>
-                    <button id='button'>Add Note</button>
-
+                    <button id='button' onClick={notify}>Add Note</button>
+                    <Toaster />
                 </form>
                 <Link to='/listNotes'>All Your Notes</Link>
             </div>
