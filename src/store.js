@@ -7,6 +7,8 @@ const initialState = {
     notes: []
 }
 
+
+//reducer
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case TYPES.RENDER_NOTES:
@@ -23,6 +25,7 @@ const reducer = (state = initialState, action) => {
     }
 }
 
+//creating store
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;

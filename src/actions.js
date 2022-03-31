@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//action types
 export const TYPES = {
     RENDER_NOTES: 'RENDER_NOTES',
     ADD_NOTE: 'ADD_NOTE'
@@ -7,7 +8,7 @@ export const TYPES = {
 
 
 
-
+//action creators
 const renderNotesAction = (data) => {
     return {
         type: TYPES.RENDER_NOTES,
@@ -25,7 +26,7 @@ const addNoteAction = (newData) => {
 
 
 
-
+// thunks
 export const renderNotes = () => async(dispatch) => {
     try {
         const data = (await axios.get('/listNotes')).data
