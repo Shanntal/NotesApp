@@ -32,4 +32,16 @@ app.post('/createNote', async(req, res,  next) => {
   }
 })
 
+app.delete('/notes/:id', async (req, res, next) => {
+  try {
+    const note = await Note.findByPk(req.params.id);
+    await note.destroy();
+    res.sendStatus(204);
+  }
+  catch(error) {
+    next(error)
+  }
+})
+
+
 module.exports = app;

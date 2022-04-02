@@ -3,7 +3,8 @@ import axios from 'axios';
 //action types
 export const TYPES = {
     RENDER_NOTES: 'RENDER_NOTES',
-    ADD_NOTE: 'ADD_NOTE'
+    ADD_NOTE: 'ADD_NOTE',
+    DELETE_NOTE: 'DELETE_NOTE',
 }
 
 
@@ -23,7 +24,12 @@ const addNoteAction = (newData) => {
     }
 }
 
-
+const deleteNoteAction = (id) => {
+    return {
+        type: TYPES.DELETE_NOTE,
+        notes: id
+    }
+}
 
 
 // thunks
@@ -41,6 +47,16 @@ export const addNote = (newData) => async(dispatch) => {
     try {
         const data  = (await axios.post(`/createNote`, newData)).data
         dispatch(addNoteAction(data))
+    }
+    catch(error) {
+        console.log(error);
+    }
+}
+
+export const deleteNote = (id) => async(dispatch) => {
+    try {
+        const data  = (await axios.delete(`/notes/${id}`)).data
+        dispatch(deleteNoteAction(data))
     }
     catch(error) {
         console.log(error);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { renderNotes } from '../actions';
+import { deleteNote } from '../actions';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
@@ -11,7 +12,15 @@ class AllNotes extends Component {
 
     async componentDidMount() {
         await this.props.renderNotes();
+        await this.props.deleteNote();
+
     }
+
+    async componentDidUpdate(prevProps) {
+        if (prevProps.notes.length !== this.props.notes.length) {
+          await this.props.renderNotes();
+        }
+      }
 
     render() {
         let list = (this.props.notes).reverse();
@@ -28,6 +37,7 @@ class AllNotes extends Component {
                                 <ul>
                                     <li>
                                         <Dropdown title ={ note.title } text = {note.text}/>
+                                        <button onClick={()=> this.props.deleteNote(note.id)}>X</button>
                                     </li>
                                 </ul> 
                             </div>
@@ -47,7 +57,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    renderNotes
+    renderNotes,
+    deleteNote
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllNotes);
