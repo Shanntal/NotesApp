@@ -21,11 +21,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 notes: [...state.notes, action.notes]
             }
-        // case TYPES.DELETE_NOTE:
-        //     return {
-        //         ...state,
-        //         notes: state.notes.filter(note => note.id !== action.notes)
-        //     }
         case TYPES.DELETE_NOTE:
             return {
                 ...state,

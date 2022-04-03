@@ -5,7 +5,7 @@ import { addNote } from '../actions';
 import { v4 as uuidv4} from 'uuid';
 
 import toast, { Toaster } from 'react-hot-toast';
-const notify = () => toast('Your note has been added');
+const notify = () => toast.success('Your note has been added');
 
 const initialState = {
     title: '',
@@ -52,7 +52,7 @@ class AddNoteForm extends React.Component {
                 <form id='addNote' onSubmit= {onSave}>
                     <input placeholder='Title...' type='text' name='title' value={ title } onChange= { onChange } />
                     <textarea  rows="5" cols="110" placeholder='Your Note...' type='text' name='text' value={ text } onChange= { onChange }></textarea>
-                    <button id='button' onClick={notify}>Add Note</button>
+                    <button id='addButton' onClick={notify}>Add Note</button>
                     <Toaster />
                 </form>
                 <Link to='/listNotes'>All Your Notes</Link>

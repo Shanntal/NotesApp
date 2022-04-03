@@ -4,6 +4,8 @@ import { renderNotes } from '../actions';
 import { deleteNote } from '../actions';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { IoTrashOutline } from "react-icons/io5";
+import { BiNotepad } from "react-icons/bi";
 
 class AllNotes extends Component {
     constructor(props) {
@@ -13,7 +15,6 @@ class AllNotes extends Component {
     async componentDidMount() {
         await this.props.renderNotes();
         await this.props.deleteNote();
-
     }
 
     async componentDidUpdate(prevProps) {
@@ -30,21 +31,21 @@ class AllNotes extends Component {
                 <div id='header'>
                     <h1>All Notes ({list.length})</h1>
                 </div>
+                <Link to='/createNote'><button id='button'><BiNotepad /></button> </Link>
                 <div className='notesContainer'>
                     {list.map(note => {
                         return (
                             <div key={note.id}>
                                 <ul>
-                                    <li>
-                                        <Dropdown title ={ note.title } text = {note.text}/>
-                                        <button onClick={()=> this.props.deleteNote(note.id)}>X</button>
+                                    <li id='noteCard'>
+                                        <button id='deleteButton' onClick={()=> this.props.deleteNote(note.id)}><IoTrashOutline/></button>
+                                        <div id='dropdown'><Dropdown title ={ note.title } text = {note.text}/></div>
                                     </li>
                                 </ul> 
                             </div>
                         )
                     })}
                 </div>
-                <Link to='/createNote'><button id='button'>Add Note</button> </Link>
             </div>
         )
     }

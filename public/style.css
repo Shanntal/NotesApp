@@ -29,12 +29,33 @@ a:hover {
     margin: 50px 10px;
 }
 
-#button {
+#addButton {
     color:orange;
     border: solid 1px orange;
     border-radius: 10px;
     background-color: white;
     cursor: pointer;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#addButton:hover {
+    color: white;
+    background-color: orange;
+}
+
+#button {
+    color: orange;
+    border: solid 1px orange;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    height: 19px;
+    width: 30px;
 }
 
 #button:hover {
@@ -93,4 +114,26 @@ input[name=text] {
 
 ul {
     list-style-type: none;
+}
+
+#noteCard {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+#deleteButton {
+    background-color: white;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+    width: 170px;
+}
+
+#dropdown {
+    
 }
